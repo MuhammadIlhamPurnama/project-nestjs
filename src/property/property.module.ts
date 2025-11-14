@@ -12,7 +12,11 @@ import { APP_PIPE } from '@nestjs/core';
         whitelist: true,
         forbidNonWhitelisted: true,
         always: true,
-        groups: ['create'] // <-- bisa tambahin group juga, tapi semua request di module property akan tervalidasi
+        // groups: ['create'] // <-- bisa tambahin group juga, tapi semua request di module property akan tervalidasi
+        transform: true,
+        transformOptions: {
+          enableImplicitConversion: true
+        }
       })
     },
   ]
