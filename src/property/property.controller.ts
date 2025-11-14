@@ -26,22 +26,12 @@ export class PropertyController {
   //   forbidNonWhitelisted: true
   // })) 
   // bisa pakai usePipes diatas, bisa juga dimasukin ke body decoration
-  create(@Body(new ValidationPipe({
-    whitelist:true, // <-- menghilangkan field yang tidak ada dalam dto
-    forbidNonWhitelisted: true, // <-- mentrigger error jika field yang diterima tidak sesuai (misal lebih field type: )
-    groups: ['create'],
-    always: true // <-- jika menggunakan groups, tambah ini untuk menghandle field yang divalidasi per group
-  })) body: CreatePropertyDto) {
+  create(@Body() body: CreatePropertyDto) {
     return body
   }
 
   @Patch(":id")
-  update(@Body(new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    groups: ['update'],
-    always: true
-  })) body: CreatePropertyDto) {
+  update(@Body() body: CreatePropertyDto) {
     return body
   }
 }
