@@ -2,6 +2,9 @@ import { Body, Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Pa
 import { CreatePropertyDto } from './dto/createProperty.dto';
 import { IdParamDto } from './dto/idParam.dto';
 import { ParseIdPipe } from './pipes/parseIdPipe';
+import { ZodValidationPipe } from './pipes/zodValidationPipe';
+import { createPropertySchema } from './dto/createPropertyZod.dto';
+import type {CreatePropertyZodDto} from './dto/createPropertyZod.dto';
 
 @Controller('property')
 export class PropertyController {
@@ -28,7 +31,8 @@ export class PropertyController {
   //   forbidNonWhitelisted: true
   // })) 
   // bisa pakai usePipes diatas, bisa juga dimasukin ke body decoration
-  create(@Body() body: CreatePropertyDto) {
+  @UsePipes(new ZodValidationPipe(createPropertySchema))
+  create(@Body() body: CreatePropertyZodDto) {
     return body
   }
 
