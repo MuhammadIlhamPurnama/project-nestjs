@@ -9,6 +9,6 @@ export const pgConfig:PostgresConnectionOptions = {
   host:'localhost',
   port: 5432,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  // synchronize: true, // to synchronize our schema with actual field in db. ok in dev but carefull in production. can cause permanent data loss, i
+  synchronize: true, // to synchronize our schema with actual field in db. ok in dev but carefull in production. can cause permanent data loss, i
   // logging: true
 }
