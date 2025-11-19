@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { PropertyFeature } from "./propertyFeature.entity";
 import { User } from "./user.entity";
+import { PropertyType } from "./propertyType.entity";
 
 @Entity()
 export class Property {
@@ -18,6 +19,9 @@ export class Property {
 
   @OneToOne(()=>PropertyFeature, (propertyFeature) => propertyFeature.property, {cascade:true})
   propertyFeature:PropertyFeature
+
+  @ManyToOne(() => PropertyType)
+  type: PropertyType;
 
   @ManyToOne(() => User, user => user.property)
   user: User
